@@ -1,0 +1,25 @@
+.input {
+  width: 80%;
+  appearance: none;
+  background-color: rgb(172, 172, 172);
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.input:focus {
+  background-color: #8263fe;
+  color: white;
+}
+
+.commentInput {
+  width: 80%;
+  height: 4em;
+  appearance: none;
+  background-color: rgb(172, 172, 172);
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+}
