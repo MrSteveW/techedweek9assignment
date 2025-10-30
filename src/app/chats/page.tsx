@@ -9,38 +9,22 @@ type paramsType = {
   };
 };
 
-export default async function AllChats({ searchParams }: paramsType) {
-  const query = await searchParams;
-
-  const chats = (await db.query(`SELECT * FROM chats`)).rows;
-  let sortedChats = chats ? [...chats] : [];
-
-  if (query.sort === "asc") {
-    sortedChats = sortedChats.sort((a, b) => a.title.localeCompare(b.title));
-  } else if (query.sort === "desc") {
-    sortedChats = sortedChats.sort((a, b) => b.title.localeCompare(a.title));
-  }
-
+export default async function AllChats() {
+  const chats = (
+    await db.query(`SELECT * FROM chats
+    JOIN users ON chats.user_id = users.id`)
+  ).rows;
   console.log(chats);
   return (
     <div className="h-screen">
-      <div className="text-center m-4 text-xl text-black">
-        <div className="bg-chat-light rounded-2xl p-1">
-          <Link href="/chats/?sort=asc" className="hover:text-chat-dark">
-            ascending
-          </Link>{" "}
-          or{" "}
-          <Link href="/chats/?sort=desc" className="hover:text-chat-dark">
-            descending
-          </Link>
-        </div>
-      </div>
+      <div className="text-center m-4 text-xl text-black"></div>
       <div className="flex flex-wrap">
-        {sortedChats.map((chat) => (
+        {chats.map((chat) => (
           <div key={chat.id} className="w-1/4 m-4">
             <Link href={`/chats/${chat.id}`}>
               <p>{chat.title}</p>
               <p>{chat.content}</p>
+              <p>{chat.user_id}</p>
             </Link>
           </div>
         ))}

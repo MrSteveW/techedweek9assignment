@@ -7,9 +7,12 @@ type ChatType = {
   content: string;
 };
 
+interface ChatProps {
+  handleSubmit: (formData: FormData) => void | Promise<void>;
+  chat?: ChatType;
+}
 
-
-const ChatForm({ chat, handleSubmit }) => {
+export default function ChatForm({ chat, handleSubmit }: ChatProps) {
   return (
     <div className="w-full flex justify-center">
       <div className="w-1/2 rounded-2xl bg-white">
@@ -51,6 +54,4 @@ const ChatForm({ chat, handleSubmit }) => {
       </div>
     </div>
   );
-};
-
-export default ChatForm;
+}

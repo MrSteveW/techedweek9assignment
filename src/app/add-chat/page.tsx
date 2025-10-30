@@ -1,32 +1,30 @@
 // ADD A NEW POST - SECURED
-import { currentUser } from "@clerk/nextjs/server";
+import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { db } from "@/utils/connect";
-import PostForm from "@/components/PostForm";
+import ChatForm from "@/components/ChatForm";
 
 export default async function AddChatPage() {
-  const user = await currentUser();
-
-  async function handleSubmit(formData) {
+  async function handleSubmit(formData: FormData) {
     "use server";
 
-    const { title, content, img } = Object.fromEntries(formData);
+    const { title, content } = Object.fromEntries(formData);
 
-    const newPost = db.query(
-      `INSERT INTO posts (username, title, content, img) VALUES ($1, $2, $3, $4)`,
-      [user.username, title, content, img]
+    const newChat = db.query(
+      `INSERT INTO chats (user_id, title, content) VALUES ($1, $2, $3)`,
+      [userInfo.id, title, content]
     );
-    revalidatePath("/posts");
-    redirect("/posts");
+    revalidatePath("/chats");
+    redirect("/chats");
   }
 
   return (
     <div className="h-screen">
-      <div className="w-full  bg-sliced-blue text-white p-4 text-2xl text-center">
+      <div className="w-full  bg-dark-blue text-white p-4 text-2xl text-center">
         Let`s talk
       </div>
-      <PostForm handleSubmit={handleSubmit} />
+      <ChatForm handleSubmit={handleSubmit} />
     </div>
   );
 }

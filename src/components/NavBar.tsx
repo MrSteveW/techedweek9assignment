@@ -1,8 +1,8 @@
-import { currentUser } from "@clerk/nextjs/server";
 import Link from "next/link";
+import { getUserInfo } from "@/utils/userInfo";
 
 export default async function NavBar() {
-  const user = await currentUser();
+  const user = await getUserInfo();
   return (
     <div className="w-full h-10 flex items-center bg-chat-dark font-fugaz text-black text-xl">
       <nav>

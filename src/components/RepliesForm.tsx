@@ -1,25 +1,12 @@
-import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { db } from "@/utils/connect";
 import styles from "./addchat.module.css";
 
-type idType = {
-  id: number;
-};
+interface ReplyProps {
+  handleSubmit: (formData: FormData) => void | Promise<void>;
+}
 
-export default async function RepliesForm({ id }: idType) {
-  const user = await currentUser();
-
-  async function handleSubmit(formData: FormData) {
-    "use server";
-    const { content } = Object.fromEntries(formData);
-
-    const newReply = db.query(
-      `INSERT INTO replies (chat_id, user_id, content) VALUES ($1, $2, $3)`,
-      [id, "1", content]
-    );
-    revalidatePath(`chats/${id}`);
-  }
+export default async function RepliesForm({ handleSubmit }: ReplyProps) {
   return (
     <div className="w-1/2 bg-white m-4 p-4 rounded-2xl">
       <form action={handleSubmit}>

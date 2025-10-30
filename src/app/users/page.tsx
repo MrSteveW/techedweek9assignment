@@ -13,7 +13,6 @@ export default async function UserPage() {
     userId,
   ]);
   const userInfo = res.rows[0];
-  console.log(userInfo);
 
   const isNotDB = userInfo === undefined;
 
