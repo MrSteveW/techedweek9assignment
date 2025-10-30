@@ -1,14 +1,18 @@
-import { getUserInfo } from "@/utils/userInfo";
+import { db } from "@/utils/connect";
+import Link from "next/link";
 
-export default async function UserPage() {
-  // const { isAuthenticated, redirectToSignIn, userId } = await auth();
-  const user = await getUserInfo();
-
+export default async function AllUsersPage() {
+  const users = (await db.query(`SELECT * FROM users`)).rows;
   return (
     <div>
-      <h2>Your profile:</h2>
-      <p className="text-2xl">{user?.username}</p>
-      <p>{user?.bio}</p>
+      <div>See all users</div>
+      <div>
+        {users.map((user) => (
+          <li key={user.id}>
+            <Link href={`/users/${user.id}`}> Username: {user.username}</Link>
+          </li>
+        ))}
+      </div>
     </div>
   );
 }

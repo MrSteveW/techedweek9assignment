@@ -21,7 +21,13 @@ export default async function AllChats() {
   console.log(chats);
   return (
     <div className="h-screen">
-      <div className="text-center m-4 text-xl text-black"></div>
+      <div className="flex justify-center m-4">
+        <div className="w-1/4 text-2xl bg-chat-dark rounded-2xl p-4 text-center">
+          <Link href="/chats/add" className="m-4  hover:text-sliced-cyan">
+            Add new chat
+          </Link>
+        </div>
+      </div>
       <div className="flex flex-wrap">
         {chats.map((chat) => (
           <div key={chat.id} className="w-1/4 m-4">

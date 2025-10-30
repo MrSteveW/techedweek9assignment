@@ -10,8 +10,11 @@ export default function NavBar() {
         <Link href="/chats" className="m-4  hover:text-sliced-cyan">
           Chats
         </Link>
-        <Link href="/add-chat" className="m-4  hover:text-sliced-cyan">
-          Add new chat
+        <Link href="/users" className="m-4  hover:text-sliced-cyan">
+          Users
+        </Link>
+        <Link href="/users/profile" className="m-4  hover:text-sliced-cyan">
+          My Profile
         </Link>
       </nav>
 
