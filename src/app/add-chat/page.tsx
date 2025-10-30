@@ -1,11 +1,12 @@
-// ADD A NEW POST - SECURED
-import { auth } from "@clerk/nextjs/server";
+// ADD A NEW POST
+import { getUserInfo } from "@/utils/userInfo";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { db } from "@/utils/connect";
 import ChatForm from "@/components/ChatForm";
 
 export default async function AddChatPage() {
+  const user = await getUserInfo();
   async function handleSubmit(formData: FormData) {
     "use server";
 
@@ -13,7 +14,7 @@ export default async function AddChatPage() {
 
     const newChat = db.query(
       `INSERT INTO chats (user_id, title, content) VALUES ($1, $2, $3)`,
-      [userInfo.id, title, content]
+      [user?.id, title, content]
     );
     revalidatePath("/chats");
     redirect("/chats");

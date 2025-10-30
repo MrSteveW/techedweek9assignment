@@ -1,4 +1,6 @@
-I'm using Typescript, baby!
+Using Typescript, baby!
+
+So much pain on using a utility to fetch the clerk_id and match it with my own db users table... especially using it in the NavBar when the user isn't signed in or hasn't created user info yet!
 
 I liked the idea of extending last week's project (as I had already implemented login with Clerk) - to store a user's Info in my db. I had to rename my tables as I'm using the same Supabase db project - so **posts** became **chats** and **comments** became **replies**
 

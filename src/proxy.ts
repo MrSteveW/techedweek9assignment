@@ -1,10 +1,24 @@
-import { clerkMiddleware } from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import type { NextRequest } from "next/server";
 
-export default clerkMiddleware();
+const isProtectedRoute = createRouteMatcher([
+  "/chats",
+  "/chats(.*)",
+  "/users(.*)",
+]);
+
+export default clerkMiddleware((auth, req: NextRequest) => {
+  console.log("🚀 Middleware running for:", req.nextUrl.pathname);
+  console.log("🔒 Is protected route:", isProtectedRoute(req));
+
+  if (isProtectedRoute(req)) {
+    console.log("🔒 Protecting route with Clerk");
+    auth.protect();
+  }
+});
 
 export const config = {
   matcher: [
-    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
-    "/(api|trpc)(.*)",
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 };

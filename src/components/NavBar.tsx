@@ -1,8 +1,6 @@
 import Link from "next/link";
-import { getUserInfo } from "@/utils/userInfo";
 
-export default async function NavBar() {
-  const user = await getUserInfo();
+export default function NavBar() {
   return (
     <div className="w-full h-10 flex items-center bg-chat-dark font-fugaz text-black text-xl">
       <nav>
@@ -16,8 +14,10 @@ export default async function NavBar() {
           Add new chat
         </Link>
       </nav>
-      {/* The following needs to change to a db call of username - not Clerk!! */}
-      <div className="fixed right-30">{user?.username}</div>
+
+      <div className="fixed right-30">
+        {/* Remove all auth calls from NavBar for now */}
+      </div>
     </div>
   );
 }
