@@ -28,7 +28,15 @@ export async function generateMetadata({ params }: paramsType) {
 export default async function IndividualChatPage({ params }: paramsType) {
   const user = await getUserInfo();
   const { id } = await params;
-  const chat = (await db.query(`SELECT * FROM chats WHERE id = ${id}`)).rows[0];
+  const chat = (
+    await db.query(`SELECT chats.id,
+  chats.title,
+  chats.content,
+  chats.created_at,
+  users.username AS username FROM chats
+   JOIN users ON chats.user_id = users.id WHERE chats.id = ${id}
+    `)
+  ).rows[0];
 
   async function handleSubmit(formData: FormData) {
     "use server";

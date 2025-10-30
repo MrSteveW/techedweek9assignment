@@ -1,35 +1,41 @@
-// EDIT INDIVIDUAL POST - SECURED
-import { currentUser } from "@clerk/nextjs/server";
+// EDIT INDIVIDUAL CHAT
+import { getUserInfo } from "@/utils/userInfo";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { db } from "@/utils/connect";
 import ChatForm from "@/components/ChatForm";
 
-export default async function EditPost({ params }) {
-  const user = await currentUser();
+type paramsType = {
+  params: {
+    id: string;
+  };
+};
+
+export default async function EditChat({ params }: paramsType) {
+  const user = await getUserInfo();
   const { id } = await params;
-  const post = (await db.query(`SELECT * FROM posts WHERE id = $1`, [id]))
+  const chat = (await db.query(`SELECT * FROM chats WHERE id = $1`, [id]))
     .rows[0];
 
-  if (post.username != user.username) {
+  if (chat.user_id != user?.id) {
     return (
-      <div className="w-full fixed top-30 bg-sliced-blue text-white p-4 text-2xl text-center">
-        You may only edit your posts
+      <div className="w-full fixed top-30 bg-dark-blue text-white p-4 text-2xl text-center">
+        You may only edit your own chats
       </div>
     );
   }
 
-  async function handleSubmit(formData) {
+  async function handleSubmit(formData: FormData) {
     "use server";
 
-    const { title, content, img } = Object.fromEntries(formData);
+    const { title, content } = Object.fromEntries(formData);
     await db.query(
-      `UPDATE posts SET username = $1, title = $2, content = $3, img = $4 WHERE id = $5`,
-      [user.username, title, content, img, id]
+      `UPDATE chats SET user_id = $1, title = $2, content = $3 WHERE id = $4`,
+      [user?.id, title, content, id]
     );
-    revalidatePath("/posts");
-    redirect("/posts");
+    revalidatePath("/chats");
+    redirect("/chats");
   }
 
-  return <ChatForm handleSubmit={handleSubmit} post={post} />;
+  return <ChatForm handleSubmit={handleSubmit} chat={chat} />;
 }

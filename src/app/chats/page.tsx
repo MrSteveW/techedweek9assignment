@@ -11,7 +11,11 @@ type paramsType = {
 
 export default async function AllChats() {
   const chats = (
-    await db.query(`SELECT * FROM chats
+    await db.query(`SELECT chats.id,
+  chats.title,
+  chats.content,
+  chats.created_at,
+  users.username AS username FROM chats
     JOIN users ON chats.user_id = users.id`)
   ).rows;
   console.log(chats);
@@ -24,7 +28,7 @@ export default async function AllChats() {
             <Link href={`/chats/${chat.id}`}>
               <p>{chat.title}</p>
               <p>{chat.content}</p>
-              <p>{chat.user_id}</p>
+              <p>{chat.username}</p>
             </Link>
           </div>
         ))}
