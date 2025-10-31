@@ -35,6 +35,7 @@ export default async function IndividualChatPage({ params }: paramsType) {
   chats.content,
   chats.created_at,
   users.avatar,
+  users.id AS userId,
   users.username AS username FROM chats
    JOIN users ON chats.user_id = users.id WHERE chats.id = ${id}
     `)

@@ -11,7 +11,6 @@ export default function WelcomeAccordian() {
       type="single"
       collapsible
       className="w-full bg-white text-lg rounded-2xl p-2"
-      defaultValue="item-1"
     >
       <AccordionItem value="item-1">
         <AccordionTrigger>Code of Conduct</AccordionTrigger>

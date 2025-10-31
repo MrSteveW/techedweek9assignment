@@ -7,6 +7,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
+import EnterAnimation from "@/components/Enteranimation";
 
 export default async function AllChats() {
   const chats = (
@@ -27,13 +28,15 @@ export default async function AllChats() {
   console.log(chats);
   return (
     <div className="h-screen">
-      <div className="flex justify-center m-4">
-        <Link href="/chats/add" className="hover:text-white">
-          <div className="text-2xl bg-chat-dark rounded-2xl px-10 py-2 text-center bg-brew-orange ">
-            Add new chat
-          </div>
-        </Link>
-      </div>
+      <EnterAnimation>
+        <div className="flex justify-center m-4">
+          <Link href="/chats/add" className="hover:text-white">
+            <div className="text-2xl bg-chat-dark rounded-2xl px-10 py-2 text-center bg-brew-orange hover:bg-brew-navy">
+              Add new chat
+            </div>
+          </Link>
+        </div>
+      </EnterAnimation>
 
       <div className="flex justify-center">
         <div className="w-4/5 bg-white">

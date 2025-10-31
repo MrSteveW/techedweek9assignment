@@ -5,6 +5,7 @@ type UserType = {
     username: string;
     avatar: string | null;
     bio: string;
+    drink: string;
   };
   numberChats: number;
 };
@@ -28,7 +29,8 @@ export default function UserProfile({ user, numberChats }: UserType) {
           <div className="w-3/4">
             <div className="text-3xl font-bold m-4">{user.username}</div>
             <div className="text-xl italic m-4">{user.bio}</div>
-            <div className="text-xl italic m-4">Total chats: {numberChats}</div>
+            <div className="text-xl m-4">Drinks {user.drink}</div>
+            <div className="text-xl m-4">Total chats: {numberChats}</div>
           </div>
         </div>
       </div>
