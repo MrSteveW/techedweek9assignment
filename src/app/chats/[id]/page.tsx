@@ -5,6 +5,7 @@ import RepliesForm from "@/components/RepliesForm";
 import ViewReplies from "@/components/ViewReplies";
 import ViewChat from "@/components/ViewChat";
 import { revalidatePath } from "next/cache";
+import { notFound } from "next/navigation";
 
 type paramsType = {
   params: {
@@ -38,6 +39,10 @@ export default async function IndividualChatPage({ params }: paramsType) {
    JOIN users ON chats.user_id = users.id WHERE chats.id = ${id}
     `)
   ).rows[0];
+
+  if (!chat) {
+    notFound();
+  }
 
   async function handleSubmit(formData: FormData) {
     "use server";

@@ -10,7 +10,7 @@ export default async function AllUsersPage() {
         <div className="text-2xl px-10 py-2 text-center ">See all users</div>
       </div>
       <div className="flex justify-center">
-        <div className="w-3/5 bg-white">
+        <div className="w-4/5 bg-white">
           {users.map((user) => (
             <Link href={`/users/${user.id}`} key={user.id}>
               {user?.avatar ? (

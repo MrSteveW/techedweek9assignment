@@ -23,7 +23,7 @@ export default async function AllChats() {
       </div>
 
       <div className="flex justify-center">
-        <div className="w-3/5 bg-white">
+        <div className="w-4/5 bg-white">
           {chats.map((chat) => (
             <Link href={`/chats/${chat.id}`} key={chat.id}>
               <div className="border border-gray-300 flex m-4 p-2">

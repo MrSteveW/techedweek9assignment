@@ -1,4 +1,3 @@
-// export default function ChatForm({ handleSubmit, chat })
 import React from "react";
 import styles from "./addchat.module.css";
 
