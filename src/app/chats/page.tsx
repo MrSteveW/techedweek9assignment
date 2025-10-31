@@ -2,13 +2,6 @@
 import { db } from "@/utils/connect";
 import Link from "next/link";
 
-type paramsType = {
-  searchParams: {
-    query: string;
-    sort: string;
-  };
-};
-
 export default async function AllChats() {
   const chats = (
     await db.query(`SELECT chats.id,
@@ -22,22 +15,27 @@ export default async function AllChats() {
   return (
     <div className="h-screen">
       <div className="flex justify-center m-4">
-        <div className="w-1/4 text-2xl bg-chat-dark rounded-2xl p-4 text-center">
-          <Link href="/chats/add" className="m-4  hover:text-sliced-cyan">
+        <Link href="/chats/add" className="hover:text-white">
+          <div className="text-2xl bg-chat-dark rounded-2xl px-10 py-2 text-center bg-brew-orange ">
             Add new chat
-          </Link>
-        </div>
-      </div>
-      <div className="flex flex-wrap">
-        {chats.map((chat) => (
-          <div key={chat.id} className="w-1/4 m-4">
-            <Link href={`/chats/${chat.id}`}>
-              <p>{chat.title}</p>
-              <p>{chat.content}</p>
-              <p>{chat.username}</p>
-            </Link>
           </div>
-        ))}
+        </Link>
+      </div>
+
+      <div className="flex justify-center">
+        <div className="w-3/5 bg-white">
+          {chats.map((chat) => (
+            <Link href={`/chats/${chat.id}`} key={chat.id}>
+              <div className="border border-gray-300 flex m-4 p-2">
+                <div className="w-1/5">{chat.username}</div>
+                <div className="w-4/5">
+                  <div className="font-bold">{chat.title}</div>
+                  <div>{chat.content}</div>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
