@@ -14,7 +14,7 @@ export default async function AllUsersPage() {
           {users.map((user) => (
             <div
               key={user.id}
-              className="border border-gray-300 p-2 m-2 w-1/7 justify-items-center"
+              className="border border-brew-orange rounded-2xl p-2 m-2 w-1/7 justify-items-center"
             >
               <Link href={`/users/${user.id}`}>
                 {user?.avatar ? (

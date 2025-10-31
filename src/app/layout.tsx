@@ -7,12 +7,19 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
-import { Schoolbell } from "next/font/google";
+import { Kalam } from "next/font/google";
+import { Fredoka } from "next/font/google";
 import NavBar from "@/components/NavBar";
 import "./globals.css";
 
-const schoolbell = Schoolbell({
-  variable: "--font-schoolbell",
+const glory = Kalam({
+  variable: "--font-kalam",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const fredoka = Fredoka({
+  variable: "--font-fredoka",
   weight: "400",
   subsets: ["latin"],
 });
@@ -35,7 +42,7 @@ export default async function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${schoolbell.variable} antialiased`}>
+        <body className={`${glory.variable}  ${fredoka.variable} antialiased`}>
           {/* {isAuthenticated && <NavBar />} */}
           <NavBar />
           <div className="fixed top-2 right-15 text-center text-white">

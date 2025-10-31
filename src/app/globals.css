@@ -14,6 +14,15 @@
   --color-brew-navy: #272663;
 }
 
+.font-kalam {
+  font-family: var(--font-kalam);
+}
+
+.font-fredoka {
+  font-family: var(--font-fredoka);
+}
+
 body {
   background-image: url("/speechbg.webp");
+  font-family: fredoka;
 }
