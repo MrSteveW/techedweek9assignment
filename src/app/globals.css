@@ -8,8 +8,10 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --color-chat-light: #bfd9f0;
-  --color-chat-dark: #9eb7e0;
+  --color-brew-orange: #ff5622;
+  --color-brew-darkblue: #9eb7e0;
+  --color-brew-lightblue: #bfd9f0;
+  --color-brew-navy: #272663;
 }
 
 body {

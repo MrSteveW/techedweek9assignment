@@ -1,5 +1,3 @@
-import { revalidatePath } from "next/cache";
-import { db } from "@/utils/connect";
 import styles from "./addchat.module.css";
 
 interface ReplyProps {

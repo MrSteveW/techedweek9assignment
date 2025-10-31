@@ -7,12 +7,13 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
-import { Geist } from "next/font/google";
+import { Schoolbell } from "next/font/google";
 import NavBar from "@/components/NavBar";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const schoolbell = Schoolbell({
+  variable: "--font-schoolbell",
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -34,18 +35,18 @@ export default async function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${geistSans.variable} antialiased`}>
+        <body className={`${schoolbell.variable} antialiased`}>
           {/* {isAuthenticated && <NavBar />} */}
           <NavBar />
           <div className="fixed top-2 right-15 text-center text-white">
             <SignedOut>
               <SignInButton>
-                <button className="bg-sliced-cyan text-black rounded-full text-sm  h-10 sm:h-12 px-3 mr-4 cursor-pointer hover:text-white hover:bg-sliced-purple">
+                <button className="bg-brew-orange text-black rounded-full text-sm  h-10 sm:h-12 px-3 mr-4 cursor-pointer hover:text-white hover:bg-brew-navy">
                   Sign In
                 </button>
               </SignInButton>
               <SignUpButton>
-                <button className="bg-sliced-cyan text-black rounded-full text-sm  h-10 sm:h-12 px-3 mr-4 cursor-pointer hover:text-white hover:bg-sliced-purple">
+                <button className="bg-brew-orange text-black rounded-full text-sm  h-10 sm:h-12 px-3 mr-4 cursor-pointer hover:text-white hover:bg-brew-navy">
                   Sign Up
                 </button>
               </SignUpButton>

@@ -1,19 +1,10 @@
-import { db } from "@/utils/connect";
-import { auth } from "@clerk/nextjs/server";
+interface UserDetailsProps {
+  handleSubmit: (formData: FormData) => void | Promise<void>;
+}
 
-export default async function UserSignUpForm() {
-  const { userId } = await auth();
-
-  async function handleSubmit(formData: FormData) {
-    "use server";
-    const data = Object.fromEntries(formData);
-
-    await db.query(
-      `INSERT INTO users (username, bio, clerk_id) VALUES ($1, $2, $3)`,
-      [data.username, data.bio, userId]
-    );
-  }
-
+export default async function UserSignUpForm({
+  handleSubmit,
+}: UserDetailsProps) {
   return (
     <form action={handleSubmit}>
       <input name="username" placeholder="enter username..." />
