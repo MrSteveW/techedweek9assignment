@@ -1,5 +1,6 @@
 import Image from "next/image";
 import brewiconbig from "../../public/brewiconbig.webp";
+import WelcomeAccordian from "@/components/WelcomeAccordian";
 
 export default function Home() {
   return (
@@ -15,7 +16,11 @@ export default function Home() {
         <div className="m-4 bg-brew-orange font-fredoka p-2 rounded-2xl text-white">
           Make a brew, start a chat
         </div>
+        <div className="w-100">
+          <WelcomeAccordian />
+        </div>
       </div>
+      <div></div>
     </div>
   );
 }

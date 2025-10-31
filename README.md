@@ -6,6 +6,9 @@ I liked the idea of extending last week's project (as I had already implemented 
 
 I had huge problems in securing routes this week - I added protected routes in the proxy utility. Claude being no help at all :( I went down the rabbit hole of webhooks and using **ngrok** which got me to register and add my port 3000 and a yet another env key but still didn't secure the routes. In the end, Connor helped me add 'async' and 'await' to my proxy.ts file. Bam. Just like that, it worked. Sometimes the smallest things can take a day to fix.
 
+Used Hover Card from chadcn https://ui.shadcn.com/docs/components/hover-card
+Used Accordian from chadcn https://ui.shadcn.com/docs/components/accordion
+
 Tea in cup floating cartoon vector icon illustration drink object icon isolated flat vector, catalyststuff
 https://www.freepik.com/free-vector/tea-cup-floating-cartoon-vector-icon-illustration-drink-object-icon-isolated-flat-vector_377452216.htm#fromView=search&page=1&position=15&uuid=7f38ec93-4945-4ce2-9a09-94bf2d035114&query=mug
 
