@@ -9,7 +9,7 @@ export default async function AllUsersPage() {
     <div className="h-screen">
       <div className="flex justify-center m-4">
         <EnterAnimation>
-          <div className="text-2xl px-10 py-2 text-center bg-white rounded-2xl">
+          <div className="text-brew-navy text-2xl px-10 py-2 text-center bg-white rounded-2xl">
             Hello people!
           </div>
         </EnterAnimation>

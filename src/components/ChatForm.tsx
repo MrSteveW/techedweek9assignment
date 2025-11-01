@@ -1,5 +1,5 @@
-import React from "react";
 import styles from "./addchat.module.css";
+import { Button } from "@/components/ui/button";
 
 type ChatType = {
   title: string;
@@ -45,9 +45,9 @@ export default function ChatForm({ chat, handleSubmit }: ChatProps) {
             />
           </div>
           <div className="text-center m-4">
-            <button type="submit" className="submit-button">
+            <Button variant="default" type="submit">
               Submit
-            </button>
+            </Button>
           </div>
         </form>
       </div>

@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { getUserInfo } from "@/utils/userInfo";
 
-export default function NavBar() {
+export default async function NavBar() {
+  const user = await getUserInfo();
   return (
     <div className="w-full h-15 flex items-center bg-brew-darkblue font-fugaz text-black text-xl">
       <nav>
@@ -18,9 +20,7 @@ export default function NavBar() {
         </Link>
       </nav>
 
-      <div className="fixed right-30">
-        {/* Remove all auth calls from NavBar for now */}
-      </div>
+      <div className="fixed right-30">{user?.username}</div>
     </div>
   );
 }

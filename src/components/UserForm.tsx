@@ -19,7 +19,7 @@ type UserType = {
 
 interface UserDetailsProps {
   handleSubmit: (formData: FormData) => void | Promise<void>;
-  user?: UserType | undefined;
+  user?: UserType | null;
 }
 
 export default function UserSignUpForm({
@@ -88,9 +88,9 @@ export default function UserSignUpForm({
                 defaultValue={user?.avatar || ""}
               />
             </div>
-            <div>
+            <div className="text-center">
               <Button variant="default" type="submit">
-                Submit
+                Save
               </Button>
             </div>
           </form>

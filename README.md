@@ -11,6 +11,8 @@ Used Accordian from chadcn https://ui.shadcn.com/docs/components/accordion
 Used Select from shadcn https://ui.shadcn.com/docs/components/select
 Used Button from shadcn https://ui.shadcn.com/docs/components/button
 
+Avatar images by DiceBear.coom https://www.dicebear.com/playground/?style=open-peeps
+
 Tea in cup floating cartoon vector icon illustration drink object icon isolated flat vector, catalyststuff
 https://www.freepik.com/free-vector/tea-cup-floating-cartoon-vector-icon-illustration-drink-object-icon-isolated-flat-vector_377452216.htm#fromView=search&page=1&position=15&uuid=7f38ec93-4945-4ce2-9a09-94bf2d035114&query=mug
 

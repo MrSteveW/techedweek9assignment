@@ -1,22 +1,22 @@
-// PROFILE PAGE
+// SIGNUP PAGE
 import { db } from "@/utils/connect";
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 import UserForm from "@/components/UserForm";
-import { getUserInfo } from "@/utils/userInfo";
-import { revalidatePath } from "next/cache";
 import EnterAnimation from "@/components/Enteranimation";
 
 export default async function UserSignUpPage() {
-  const user = await getUserInfo();
+  const { userId } = await auth();
 
   async function handleSubmit(formData: FormData) {
     "use server";
-
     const data = Object.fromEntries(formData);
+
     await db.query(
-      `UPDATE users SET username = $1, bio = $2, drink = $3, avatar = $4 WHERE id = $5`,
-      [data?.username, data?.bio, data?.drink, data?.avatar, user?.id]
+      `INSERT INTO users (username, bio, drink, avatar, clerk_id) VALUES ($1, $2, $3, $4, $5)`,
+      [data.username, data.bio, data.drink, data.avatar, userId]
     );
-    revalidatePath("/users/profile");
+    redirect("/chats");
   }
 
   return (
@@ -24,11 +24,11 @@ export default async function UserSignUpPage() {
       <div className="flex justify-center m-4">
         <EnterAnimation>
           <div className="text-brew-navy text-2xl px-10 py-2 text-center bg-white rounded-2xl">
-            Hey you!
+            Tell us more!
           </div>
         </EnterAnimation>
       </div>
-      <UserForm handleSubmit={handleSubmit} user={user} />
+      <UserForm handleSubmit={handleSubmit} />
     </div>
   );
 }
