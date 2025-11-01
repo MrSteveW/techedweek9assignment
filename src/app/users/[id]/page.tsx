@@ -10,6 +10,19 @@ type paramsType = {
   };
 };
 
+export async function generateMetadata({ params }: paramsType) {
+  const { id } = await params;
+  const user = (await db.query(`SELECT * FROM users WHERE id = ${id}`)).rows[0];
+  return {
+    title: `Brew | ${user.username}`,
+    description: `Make a brew, start a chat`,
+    openGraph: {
+      description: `Brew | ${user.username}`,
+      url: `https://techedweek9assignment.vercel.app/users/${user.id}}`,
+    },
+  };
+}
+
 export default async function IndividualUserPage({ params }: paramsType) {
   const { id } = await params;
   const user = (await db.query(`SELECT * FROM users WHERE id = ${id}`)).rows[0];

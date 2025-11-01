@@ -18,6 +18,7 @@
 - [x] View all users, click on user to see invidual user page and chats.length to display how many chats that have started
 - [x] Hover over user avatar and see when the joined
 - [x] Fun Motion enter animation for titles and gesture for hover over
+- [x] Used Suspense from Next to wrap list of users (when we go viral and have 000s of users) and used Motion ThreeDotsPulse as spinner
 
 ## :dart: Goals not acheived yet
 
