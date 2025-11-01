@@ -8,6 +8,9 @@ const isProtectedRoute = createRouteMatcher([
 ]);
 
 export default clerkMiddleware(async (auth, req: NextRequest) => {
+  if (req.nextUrl.pathname.startsWith("/users/signup")) {
+    return;
+  }
   if (isProtectedRoute(req)) {
     await auth.protect();
   }

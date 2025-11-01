@@ -40,6 +40,7 @@ export default function UserSignUpForm({
                 className="w-full border boder-gray-300 rounded-lg p-2"
                 name="username"
                 defaultValue={user?.username || ""}
+                required
               />
             </div>
             {/* USERNAME */}
@@ -51,6 +52,7 @@ export default function UserSignUpForm({
                 className="w-full border boder-gray-300 rounded-lg p-2"
                 name="bio"
                 defaultValue={user?.bio || ""}
+                required
               />
             </div>
             {/* DRINKS */}
