@@ -25,10 +25,10 @@ const fredoka = Fredoka({
 });
 
 export const metadata = {
-  title: "Brew",
+  title: "Brew | Start a chat",
   description: "Make a brew, start a chat",
   openGraph: {
-    title: "Brew",
+    title: "Brew | Start a chat",
     description: "Make a brew, start a chat",
     url: "https://techedweek9assignment.vercel.app/",
   },
@@ -63,7 +63,7 @@ export default async function RootLayout({
             </SignedIn>
           </div>
           {children}
-          <footer className="w-full p-2 fixed bottom-0 bg-sliced-blue text-center text-white">
+          <footer className="w-full p-2 fixed bottom-0 bg-brew-darkblue text-center ">
             Made by Steve
           </footer>
         </body>

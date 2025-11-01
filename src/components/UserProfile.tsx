@@ -1,16 +1,19 @@
 import Image from "next/image";
 
-type UserType = {
+type UserInfoType = {
   user: {
-    username: string;
-    avatar: string | null;
+    avatar: string;
     bio: string;
+    clerk_id: string;
+    created_at: Date;
+    id: number;
     drink: string;
+    username: string;
   };
   numberChats: number;
 };
 
-export default function UserProfile({ user, numberChats }: UserType) {
+export default function UserProfile({ user, numberChats }: UserInfoType) {
   return (
     <div className="flex justify-center">
       <div className="w-4/5 border border-gray-400 bg-white m-8">

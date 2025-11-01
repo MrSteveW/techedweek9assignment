@@ -2,6 +2,7 @@
 import { db } from "@/utils/connect";
 import Link from "next/link";
 import Image from "next/image";
+import brewiconsm from "../../../public/brewiconsm.webp";
 import {
   HoverCard,
   HoverCardContent,
@@ -25,14 +26,15 @@ export default async function AllChats() {
      ORDER BY chats.created_at DESC
   `)
   ).rows;
-  console.log(chats);
+
   return (
     <div className="h-screen">
       <EnterAnimation>
         <div className="flex justify-center m-4">
           <Link href="/chats/add" className="hover:text-white">
-            <div className="text-2xl bg-chat-dark rounded-2xl px-10 py-2 text-center bg-brew-orange hover:bg-brew-navy">
-              Add new chat
+            <div className="flex text-2xl bg-chat-dark rounded-2xl px-10 py-2 text-white text-center bg-brew-orange hover:bg-brew-navy">
+              <Image src={brewiconsm} alt="" height={40} />
+              <div className="ml-4">Add new chat</div>
             </div>
           </Link>
         </div>
@@ -62,7 +64,7 @@ export default async function AllChats() {
                       <div>Drinks {chat.drink}</div>
                       <div>
                         Joined{" "}
-                        {chat.created_at.toLocaleString("en-GB", {
+                        {chat.membersince.toLocaleString("en-GB", {
                           month: "short",
                           year: "numeric",
                         })}
@@ -75,6 +77,13 @@ export default async function AllChats() {
                 <Link href={`/chats/${chat.id}`}>
                   <div className="font-bold">{chat.title}</div>
                   <div>{chat.content}</div>
+                  <div className="text-gray-700 text-sm">
+                    {new Date(chat.created_at).toLocaleDateString("en-GB", {
+                      weekday: "short",
+                      day: "numeric",
+                      month: "short",
+                    })}
+                  </div>
                 </Link>
               </div>
             </div>

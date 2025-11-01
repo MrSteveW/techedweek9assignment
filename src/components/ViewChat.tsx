@@ -10,6 +10,7 @@ type chatType = {
     avatar: string;
     username: string;
     content: string;
+    created_at: Date;
   };
 };
 
@@ -27,6 +28,13 @@ export default async function ViewChat({ chat }: chatType) {
         <div className="m-2 font-bold">{chat.title}</div>
 
         <div className="m-2">{chat.content}</div>
+        <div className="text-gray-700 text-sm">
+          {new Date(chat.created_at).toLocaleDateString("en-GB", {
+            weekday: "short",
+            day: "numeric",
+            month: "short",
+          })}
+        </div>
         {user?.id == chat?.user_id && (
           <Link
             href={`/chats/${chat.id}/edit`}

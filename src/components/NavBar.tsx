@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NavBar() {
   return (
-    <div className="w-full h-10 flex items-center bg-brew-darkblue font-fugaz text-black text-xl">
+    <div className="w-full h-15 flex items-center bg-brew-darkblue font-fugaz text-black text-xl">
       <nav>
         <Link href="/" className="m-4 hover:text-brew-orange">
           Home

@@ -7,6 +7,7 @@ type UserInfoType = {
   clerk_id: string;
   created_at: Date;
   id: number;
+  drink: string;
   username: string;
 };
 
