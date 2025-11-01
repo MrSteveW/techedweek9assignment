@@ -9,6 +9,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import EnterAnimation from "@/components/Enteranimation";
+import Gestures from "@/components/Gestures";
 
 export default async function AllChats() {
   const chats = (
@@ -17,6 +18,7 @@ export default async function AllChats() {
       chats.title,
       chats.content,
       chats.created_at,
+      users.id AS userid,
       users.username AS username,
       users.avatar AS avatar,
       users.created_at AS memberSince,
@@ -31,12 +33,14 @@ export default async function AllChats() {
     <div className="h-screen">
       <EnterAnimation>
         <div className="flex justify-center m-4">
-          <Link href="/chats/add" className="hover:text-white">
-            <div className="flex text-2xl bg-chat-dark rounded-2xl px-10 py-2 text-white text-center bg-brew-orange hover:bg-brew-navy">
-              <Image src={brewiconsm} alt="" height={40} />
-              <div className="ml-4">Add new chat</div>
-            </div>
-          </Link>
+          <Gestures>
+            <Link href="/chats/add" className="hover:text-white">
+              <div className="flex text-2xl bg-chat-dark rounded-2xl px-10 py-2 text-white text-center bg-brew-orange hover:bg-brew-navy">
+                <Image src={brewiconsm} alt="" height={40} />
+                <div className="ml-4">Add new chat</div>
+              </div>
+            </Link>
+          </Gestures>
         </div>
       </EnterAnimation>
 
@@ -46,31 +50,33 @@ export default async function AllChats() {
             <div className="border border-gray-300 flex m-4 p-2" key={chat.id}>
               <div className="w-1/6">
                 <HoverCard>
-                  <HoverCardTrigger>
-                    {chat.avatar ? (
-                      <div className="w-10 h-10 relative">
-                        <Image
-                          src={chat.avatar}
-                          alt=""
-                          fill={true}
-                          unoptimized
-                        />
-                      </div>
-                    ) : (
-                      <div className="w-50 h-50 relative">IMAGE TBD</div>
-                    )}
-                    <div>{chat.username}</div>
-                    <HoverCardContent>
-                      <div>Drinks {chat.drink}</div>
-                      <div>
-                        Joined{" "}
-                        {chat.membersince.toLocaleString("en-GB", {
-                          month: "short",
-                          year: "numeric",
-                        })}
-                      </div>
-                    </HoverCardContent>
-                  </HoverCardTrigger>
+                  <Link href={`/users/${chat.userid}`}>
+                    <HoverCardTrigger>
+                      {chat.avatar ? (
+                        <div className="w-10 h-10 relative">
+                          <Image
+                            src={chat.avatar}
+                            alt=""
+                            fill={true}
+                            unoptimized
+                          />
+                        </div>
+                      ) : (
+                        <div className="w-50 h-50 relative">IMAGE TBD</div>
+                      )}
+                      <div>{chat.username}</div>
+                      <HoverCardContent>
+                        <div>Drinks {chat.drink}</div>
+                        <div>
+                          Joined{" "}
+                          {chat.membersince.toLocaleString("en-GB", {
+                            month: "short",
+                            year: "numeric",
+                          })}
+                        </div>
+                      </HoverCardContent>
+                    </HoverCardTrigger>
+                  </Link>
                 </HoverCard>
               </div>
               <div className="w-5/6">

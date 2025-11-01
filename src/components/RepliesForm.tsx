@@ -1,4 +1,5 @@
 import styles from "./addchat.module.css";
+import { Button } from "@/components/ui/button";
 
 interface ReplyProps {
   handleSubmit: (formData: FormData) => void | Promise<void>;
@@ -17,9 +18,11 @@ export default async function RepliesForm({ handleSubmit }: ReplyProps) {
           id="content"
           required
         />
-        <button type="submit" className="submit-button">
-          Submit
-        </button>
+        <div>
+          <Button variant="default" type="submit">
+            Submit
+          </Button>
+        </div>
       </form>
     </div>
   );

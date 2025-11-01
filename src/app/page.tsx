@@ -3,6 +3,7 @@ import brewiconbig from "../../public/brewiconbig.webp";
 import WelcomeAccordian from "@/components/WelcomeAccordian";
 import Link from "next/link";
 import EnterAnimation from "@/components/Enteranimation";
+import Gestures from "@/components/Gestures";
 
 export default function Home() {
   return (
@@ -20,11 +21,13 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col items-center text-2xl">
-        <div className="m-4 bg-brew-orange p-2 rounded-2xl text-white hover:bg-brew-navy">
-          <Link href="/chats" className="m-4">
-            Make a brew, start a chat
-          </Link>
-        </div>
+        <Gestures>
+          <div className="m-4 bg-brew-orange p-2 rounded-2xl text-white hover:bg-brew-navy">
+            <Link href="/chats" className="m-4">
+              Make a brew, start a chat
+            </Link>
+          </div>
+        </Gestures>
         <div className="w-100">
           <WelcomeAccordian />
         </div>
