@@ -1,22 +1,21 @@
 "use client";
 
-type ChatType = {
+interface DeleteProps {
+  handleDelete: (replyId: number, chatId: number) => void | Promise<void>;
   replyId: number;
   chatId: number;
-};
-
-interface ChatProps {
-  handleSubmit: (formData: FormData) => void | Promise<void>;
-  chat?: ChatType; // Optional - undefined when creating new chat
 }
 
-export default function DelReplyButton({ replyId, chatId, handleDelete }) {
+export default function DelReplyButton({
+  replyId,
+  chatId,
+  handleDelete,
+}: DeleteProps) {
   return (
     <button
       onClick={() => {
         handleDelete(replyId, chatId);
       }}
-      className="delete-button"
     >
       Delete comment
     </button>
