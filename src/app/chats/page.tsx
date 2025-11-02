@@ -3,13 +3,9 @@ import { db } from "@/utils/connect";
 import Link from "next/link";
 import Image from "next/image";
 import brewiconsm from "../../../public/brewiconsm.webp";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
 import EnterAnimation from "@/components/Enteranimation";
 import Gestures from "@/components/Gestures";
+import ChatCard from "@/components/ChatCard";
 
 export default async function AllChats() {
   const chats = (
@@ -47,52 +43,7 @@ export default async function AllChats() {
       <div className="flex justify-center">
         <div className="w-4/5 bg-white">
           {chats.map((chat) => (
-            <div className="border border-gray-300 flex m-4 p-2" key={chat.id}>
-              <div className="w-1/6">
-                <HoverCard>
-                  <Link href={`/users/${chat.userid}`}>
-                    <HoverCardTrigger>
-                      {chat.avatar ? (
-                        <div className="w-10 h-10 relative">
-                          <Image
-                            src={chat.avatar}
-                            alt=""
-                            fill={true}
-                            unoptimized
-                          />
-                        </div>
-                      ) : (
-                        <div className="w-50 h-50 relative">IMAGE TBD</div>
-                      )}
-                      <div>{chat.username}</div>
-                      <HoverCardContent>
-                        <div>Drinks {chat.drink}</div>
-                        <div>
-                          Joined{" "}
-                          {chat.membersince.toLocaleString("en-GB", {
-                            month: "short",
-                            year: "numeric",
-                          })}
-                        </div>
-                      </HoverCardContent>
-                    </HoverCardTrigger>
-                  </Link>
-                </HoverCard>
-              </div>
-              <div className="w-5/6">
-                <Link href={`/chats/${chat.id}`}>
-                  <div className="font-bold">{chat.title}</div>
-                  <div>{chat.content}</div>
-                  <div className="text-gray-700 text-sm">
-                    {new Date(chat.created_at).toLocaleDateString("en-GB", {
-                      weekday: "short",
-                      day: "numeric",
-                      month: "short",
-                    })}
-                  </div>
-                </Link>
-              </div>
-            </div>
+            <ChatCard chat={chat} key={chat.id} />
           ))}
         </div>
       </div>

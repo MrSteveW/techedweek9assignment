@@ -14,7 +14,8 @@
 
 - [x] Using Typescript, baby!
 - [x] Users can edit only their own 'chats'
-- [x] Username and bio are requried (client-side validation)
+- [x] Used the delete technique that Connor suggested from last week - in rendering ViewIndvChat there is a server-side handleDelete function and a hidden value to send the database the chatid to delete
+- [x] Username and bio are required (client-side validation)
 - [x] View all users, click on user to see invidual user page and chats.length to display how many chats that have started
 - [x] Hover over user avatar and see when the joined
 - [x] Fun Motion enter animation for titles and gesture for hover over
@@ -22,7 +23,7 @@
 
 ## :dart: Goals not acheived yet
 
-- [ ] Put divs rendering user info into more components so that each page is easier to parse
+- [ ] Styling delete buttons. I could. But I've run out of time.
 
 ## With thanks to
 

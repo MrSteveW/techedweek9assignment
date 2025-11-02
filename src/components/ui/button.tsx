@@ -9,7 +9,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-brew-orange/90 border text-primary-foreground hover:bg-brew-darkblue cursor-pointer",
+          "bg-brew-orange border text-primary-foreground hover:bg-brew-navy cursor-pointer text-white",
         destructive:
           "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
         outline:
@@ -50,11 +50,11 @@ function Button({
   const Comp = asChild ? Slot : "button";
 
   return (
-      <Comp
-        data-slot="button"
-        className={cn(buttonVariants({ variant, size, className }))}
-        {...props}
-      />
+    <Comp
+      data-slot="button"
+      className={cn(buttonVariants({ variant, size, className }))}
+      {...props}
+    />
   );
 }
 

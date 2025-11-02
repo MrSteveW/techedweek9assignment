@@ -3,7 +3,7 @@ import { db } from "@/utils/connect";
 import { getUserInfo } from "@/utils/userInfo";
 import RepliesForm from "@/components/RepliesForm";
 import ViewReplies from "@/components/ViewReplies";
-import ViewChat from "@/components/ViewChat";
+import ViewInvChat from "@/components/ViewInvChat";
 import { revalidatePath } from "next/cache";
 import { notFound } from "next/navigation";
 
@@ -58,7 +58,7 @@ export default async function IndividualChatPage({ params }: paramsType) {
 
   return (
     <div className="justify-items-center">
-      <ViewChat chat={chat} />
+      <ViewInvChat chat={chat} />
       <RepliesForm handleSubmit={handleSubmit} />
       <ViewReplies id={chat.id} />
     </div>
